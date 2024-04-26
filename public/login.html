@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login and Register</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html"><img src="images/logos/placeholder.jpg"></a>
+            <span>HospitalGP
+        </div>
+        <nav class="navigation">
+            <a href="index.html">Home</a>
+            <a href="#">About</a>
+            <a href="#">Service</a>
+            <a href="#">Contact</a>
+            <button class="btnLogin-popup" onclick="window.location.href='login.html'">Login</button>
+        </nav>
+    </header>
+
+  <!-- log in -->
+<div class="loginPage">
+    <div class="wrapper">
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form>
+                <div class="input-box">
+                    <span class="icon"><ion-icon
+                    name="mail"></ion-icon></span>
+                    <input type="email" id="login-Email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon
+                    name="lock-closed"></ion-icon></span>
+                    <input type="password" id="login-Password" required>
+                    <label>Password</label>
+                </div>
+                <div class="error-notify login">
+                    Please fill in.
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">
+                    Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+            </form>
+            <button class="btn" id="login">LOG IN</button>
+            <div class="login-register">
+                <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                <script>
+                    document.querySelector(".register-link").addEventListener('click', function(event) {
+                        event.preventDefault(); // Prevent the default action
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="form-box register">
+            <h2>Registration</h2>
+            <form>
+                <div class="input-box">
+                    <span class="icon"><ion-icon
+                    name="mail"></ion-icon></span>
+                    <input type="email" id="register-Email" required>
+                    <label>Email</label>
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon
+                    name="person"></ion-icon></span>
+                    <input type="text" id="register-Name" required>
+                    <label>Full Name</label>
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon
+                    name="lock-closed"></ion-icon></span>
+                    <input type="password" id="register-Password" required>
+                    <label>Password</label>
+                </div>
+                <div class="select-box">
+                    <select id="enterRole" required>
+                        <option value="" disabled selected>Select Role</option>
+                        <option value="role1">User</option>
+                        <option value="role2">Staff</option>
+                        <option value="role3">Doctor</option>
+                        <option value="role4">Nurse</option>
+                        <!-- try to make another role for admin -->
+                    </select>
+                </div>
+                <div class="error-notify register">
+                    Please fill in.
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">
+                    I agree to the terms & conditions</label>
+                </div>
+            </form>
+            <button class="btn" id="register">Register</button>
+            <div class="login-register">
+                <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                <script>
+                    document.querySelector(".login-link").addEventListener('click', function(event) {
+                        event.preventDefault(); // Prevent the default action
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+    
+</body>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script type="module" src="js/login.js"></script>
+
+</html>

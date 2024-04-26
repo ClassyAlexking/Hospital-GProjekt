@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!--  -->
+  <header>
+    <div class="logo">
+        <a href="index.html"><img src="images/logos/placeholder.jpg"></a>
+        <span>HospitalGP
+    </div>
+    <nav class="navigation">
+        <a href="index.html">Home</a>
+        <a href="#">About</a>
+        <a href="#">Service</a>
+        <a href="#">Contact</a>
+        <button class="btnLogin-popup" onclick="window.location.href='login.html'">Login</button>
+        <img src="images/profiles/user.png" id="user-sub-menu" class="user-pic">
+        <div class="sub-menu-wrap">
+          <div class="sub-menu">
+            <div class="user-info">
+              <img src="images/profiles/user.png">
+              <h3 id="myUsername">Username</h3>
+            </div>
+            <hr>
+            <a href="#" class="sub-menu-link">
+              <img src="images/profiles/profile.png">
+              <p>Edit Profile</p>
+              <span>></span>
+            </a>
+            <a href="#" class="sub-menu-link">
+              <img src="images/profiles/setting.png">
+              <p>Settings & Privacy</p>
+              <span>></span>
+            </a>
+            <a href="index.html" class="sub-menu-link">
+              <img src="images/profiles/help.png">
+              <p>Help & Support</p>
+              <span>></span>
+            </a>
+            <a href="index.html" id="logout" class="sub-menu-link">
+              <img src="images/profiles/logout.png">
+              <p>Logout</p>
+              <span>></span>
+            </a>
+          </div> 
+        </div>
+      </nav>
+</header>
+<!--  -->
+
+<div class="container">
+  <h1>Our Service</h1>
+  <div class="row">
+    <div class="service">
+      <i class="fa-solid fa-hospital-user"></i>
+      <h2>Appointment</h2>
+      <p>Lorem ipsum. king king shit</p>
+    </div>
+    <div class="service">
+      <i class="fa-solid fa-receipt"></i>
+      <h2>Medical History</h2>
+      <p>Lorem ipsum. king king shit</p>
+    </div>
+    <div class="service">
+      <i class="fa-solid fa-user-doctor"></i>
+      <h2>Our Doctor</h2>
+      <p>Lorem ipsum. king king shit</p>
+    </div>
+    <div class="service">
+      <i class="fa-solid fa-kit-medical"></i>
+      <h2>Equipment</h2>
+      <p>Lorem ipsum. king king shit</p>
+    </div>
+    <div id="MedicineTab" class="service">
+      <i class="fa-solid fa-pills"></i>
+      <h2>Medicines</h2>
+      <p>Lorem ipsum. king king shit</p>
+    </div>
+    <script>
+      const MedicineTab = document.getElementById("MedicineTab");
+      MedicineTab.addEventListener('click', function(event) {
+        localStorage.removeItem('username');
+        window.location.href = "medicine.html";
+      });
+    </script>
+  </div>
+</div>
+
+
+
+
+
+</body>
+<script src="https://kit.fontawesome.com/cbe61eb727.js" crossorigin="anonymous"></script>
+<script type="module" src="js/index.js"></script>
+<!-- <script>
+  // Initial variable values
+  var userPic = document.getElementById('user-sub-menu');
+
+  userPic.addEventListener('click',()=> {
+    alert("Hello");
+})
+</script> -->
+
+
+</html>

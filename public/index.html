@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GP Hospital</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+        <a href="index.html"><img src="images/logos/placeholder.jpg"></a>
+        <span>HospitalGP
+    </div>
+    <nav class="navigation">
+        <a href="index.html">Home</a>
+        <a href="#">About</a>
+        <a href="service.html">Service</a>
+        <a href="#">Contact</a>
+        <button class="btnLogin-popup" onclick="window.location.href='login.html'">Login</button>
+        <img src="images/profiles/user.png" id="user-sub-menu" class="user-pic">
+        <div class="sub-menu-wrap">
+          <div class="sub-menu">
+            <div class="user-info">
+              <img src="images/profiles/user.png">
+              <h3 id="myUsername">Username</h3>
+            </div>
+            <hr>
+            <a href="#" class="sub-menu-link">
+              <img src="images/profiles/profile.png">
+              <p>Edit Profile</p>
+              <span>></span>
+            </a>
+            <a href="#" class="sub-menu-link">
+              <img src="images/profiles/setting.png">
+              <p>Settings & Privacy</p>
+              <span>></span>
+            </a>
+            <a href="index.html" class="sub-menu-link">
+              <img src="images/profiles/help.png">
+              <p>Help & Support</p>
+              <span>></span>
+            </a>
+            <a href="index.html" id="logout" class="sub-menu-link">
+              <img src="images/profiles/logout.png">
+              <p>Logout</p>
+              <span>></span>
+            </a>
+          </div>
+        </div>
+      </nav>
+</header>
+
+<section id="lunch">
+  <h2>Lunch</h2>
+  <p>Menu for Lunch:</p>
+  <ul>
+    <li>Grilled Chicken</li>
+    <li>Rice</li>
+    <li>Steamed Vegetables</li>
+    <li>Soup</li>
+    <li>Fruit Juice</li>
+  </ul>
+</section>
+
+<section id="dinner">
+  <h2>Dinner</h2>
+  <p>Menu for Dinner:</p>
+  <ul>
+    <li>Salmon</li>
+    <li>Mashed Potatoes</li>
+    <li>Green Salad</li>
+    <li>Bread Rolls</li>
+    <li>Water</li>
+  </ul>
+</section>
+
+<section id="snacks">
+  <h2>Snacks</h2>
+  <p>Menu for Snacks:</p>
+  <ul>
+    <li>Yogurt</li>
+    <li>Fruit</li>
+    <li>Nuts</li>
+    <li>Granola Bars</li>
+    <li>Smoothies</li>
+  </ul>
+</section>
+
+<section id="medical">
+  <h2>Medical</h2>
+  <p>List of Current Medicines:</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Medicine</th>
+        <th>Dosage</th>
+        <th>Frequency</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Paracetamol</td>
+        <td>500mg</td>
+        <td>Every 6 hours</td>
+      </tr>
+      <tr>
+        <td>Aspirin</td>
+        <td>81mg</td>
+        <td>Once daily</td>
+      </tr>
+      <!-- Add more rows as needed -->
+    </tbody>
+  </table>
+</section>
+
+<section id="about">
+  <h2>About us:</h2>
+  <p>Menu for Snacks:</p>
+  <ul>
+    <li>Yogurt</li>
+    <li>Fruit</li>
+    <li>Nuts</li>
+    <li>Granola Bars</li>
+    <li>Smoothies</li>
+  </ul>
+</section>
+
+<section id="contact">
+  <h2>Contact us:</h2>
+
+</section>
+
+</body>
+<script type="module" src="js/index.js"></script>
+<!-- <script>
+  // Initial variable values
+  var userPic = document.getElementById('user-sub-menu');
+
+  userPic.addEventListener('click',()=> {
+    alert("Hello");
+})
+</script> -->
+
+
+</html>
