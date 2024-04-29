@@ -17,39 +17,45 @@ from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
 
 const db = getDatabase();
 
-function makeMedicineItems(medId, medName, medNumber, medManuf, medExpDate, medPRice){
+function makeDoctorItems(email, role, speciality){
+    const dbRef = ref(db);
+    // let 
+    get(child(dbRef, "Users/" + email))
+    .then((UserSnapshot)=>{
+        // let currentUser = new User(snapshot.val().Email,snapshot.val().Password,snapshot.val().Username,
+        //                     snapshot.val().PhoneNumber,snapshot.val().Sex,snapshot.val().Birthdate,
+        //                     snapshot.val().Role,snapshot.val().HistoryVer);
+    })
+    .catch((error)=>{
+        alert(error)
+    })
+
+
     var container = document.querySelector(".Medrow");
     var newMedicineItem = document.createElement("div");
     newMedicineItem.classList.add("medicinesItem");
-    newMedicineItem.id = medId;
+    newMedicineItem.id = email;
 
-    var img = new Image();
-    img.src = `images/medicines/${medName}.png`;
     var command = '<img src="images/default_item.png" width="100" height="100">';
-    // img.onload = function() {
-    //     // Image found, display it
-    //     container.innerHTML = `
-    //     <img src="${imageSrc}" alt="${imageName} width="100" height="100"">
-    //     <h2>${medName}</h2>
-    //     <p>Price: ${medPRice}</p>
-    //     `;
-    // };
-    // img.onerror = function() {
-    //     // Image not found, display default image
-    //     container.innerHTML = `
-    //     <img src="images/default_item.png" alt="Default Image width="100" height="100"">
-    //     <h2>${medName}</h2>
-    //     <p>Price: ${medPRice}</p>
-    //     `;
-    // };
-
     newMedicineItem.innerHTML = `
     ${command}
-    <h2>${medName}</h2>
-    <p>Price: ${medPRice}</p>
+    <h2>${email}</h2>
+    <p>Speciality: ${role}</p>
     `;
     container.appendChild(newMedicineItem);
     container.insertBefore(newMedicineItem, document.getElementById("AddMedicine"));
+
+    newMedicineItem.addEventListener('click', function(event) {
+        var medicinesPopup = document.querySelector('.form-box.login');
+        document.querySelector('.Medicines-popup').classList.add("active");
+        medicinesPopup.querySelector('h2').textContent = email;
+        medicinesPopup.querySelector('p').textContent = role;
+        var yesReqbtn = document.getElementById("yesReqbtn");
+        yesReqbtn.addEventListener('click', function() {
+            addRoleReq(email,role);
+            alert(`Email: ${email}, Role: ${role}`);
+        });
+    });
 }
 
 document.getElementById("addMedbtn").addEventListener('click', function(event) {
@@ -81,12 +87,12 @@ document.getElementById("addMedbtn").addEventListener('click', function(event) {
         //this thing cant handle '.'
         
     const dbref = ref(db);
-    get(child(dbref, "Medicines/" + medID))
+    get(child(dbref, "Doctors/" + medID))
     .then((snapshot)=>{
         if(snapshot.exists()){
-            alert("There already exist a similar medicine. Do you want to update");
+            alert("There already exist a similar doctor. Do you want to update");
         } else {
-            set(ref(db, "Medicines/"+ medID),{
+            set(ref(db, "Doctors/"+ medID),{
                 Name: medName ,
                 Number: parseInt(medNumber),
                 Manufacturer: medManuf,
@@ -117,15 +123,10 @@ document.getElementById("addMedbtn").addEventListener('click', function(event) {
 function getAllData(){
     const dbRef = ref(db);
     
-    get(child(dbRef, "Medicines"))
+    get(child(dbRef, "Doctor"))
     .then((snapshot)=>{
         snapshot.forEach(childSnapshot => {
-            get(child(dbRef, "Medicines/" + childSnapshot.key + "/History/" + childSnapshot.val().Version))
-            .then((histSnapshot) =>{
-                    makeMedicineItems(childSnapshot.key, childSnapshot.val().Name, childSnapshot.val().Number,
-                    childSnapshot.val().Manufacturer, childSnapshot.val().Expire, histSnapshot.val().Price);
-            });
-            
+            makeDoctorItems(childSnapshot.val().Email, childSnapshot.val().Role,childSnapshot.val().Speciality);
         });
     });
 }

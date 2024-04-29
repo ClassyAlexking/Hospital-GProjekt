@@ -14,6 +14,7 @@ const app = initializeApp(firebaseConfig);
 
 import {getDatabase, ref, get, set, child, update, remove}
 from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
+import {User} from "./class.js";
 
 
 
@@ -27,7 +28,8 @@ var loginPassword = document.getElementById("login-Password");
 var registerEmail = document.getElementById("register-Email");
 var registerName = document.getElementById("register-Name");
 var registerPassword = document.getElementById("register-Password");
-
+var selectRole = document.getElementById('enterRole');
+var selectedRole;
 
 
 var findID = document.querySelector("#findID");
@@ -44,6 +46,10 @@ var insertBtn = document.querySelector("#insert");
 var updateBtn = document.querySelector("#update");
 var removeBtn = document.querySelector("#remove");
 var findBtn = document.querySelector("#find");
+
+selectRole.addEventListener('change', function() {
+    selectedRole = selectRole.value;
+});
 
 loginBtn.addEventListener('click',()=> {
     if (loginPassword.value == '' || loginEmail.value == '') {
@@ -69,8 +75,11 @@ loginBtn.addEventListener('click',()=> {
             // alert(snapshot.exists());
             // alert(enterPassword.value);
             // alert(snapshot.val().Password);
+            let currentUser = new User(snapshot.val().Email,snapshot.val().Password,snapshot.val().Username,
+                                snapshot.val().PhoneNumber,snapshot.val().Sex,snapshot.val().Birthdate,
+                                snapshot.val().Role,snapshot.val().HistoryVer);
             if(loginPassword.value == snapshot.val().Password){
-                localStorage.setItem('username', snapshot.val().Username);
+                localStorage.setItem('User', JSON.stringify(currentUser));
                 window.location.href = "index.html";
             } else { 
             alert("Wrong password!");
@@ -99,18 +108,29 @@ registerBtn.addEventListener('click',()=> {
     if (Index !== -1) {
         registerEmail.value = registerEmail.value.substring(0, Index);
     }
+
+    // Add event listener for change event
     const dbref = ref(db);
     get(child(dbref, "Users/" + registerEmail.value))
     .then((snapshot)=>{
         if(snapshot.exists()){
             alert("There already exist an account with this email");
         } else {
+            if (selectedRole != "User"){
+                set(ref(db, "RoleRequest/"+ registerEmail.value),{
+                    Email: registerEmail.value,
+                    Role: selectedRole,
+                });
+            }
             set(ref(db, "Users/"+ registerEmail.value),{
                 Email: registerEmail.value,
                 Password: registerPassword.value,
                 Username: registerName.value,
                 PhoneNumber: "",
-                Sex: "Male",
+                Sex: 0,
+                Birthdate: "",
+                Role: "User",
+                HistoryVer: 0,
             })
             .then(()=>{
                 alert("Data added successfully");

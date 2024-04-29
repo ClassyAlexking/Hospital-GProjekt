@@ -25,15 +25,17 @@ userPic.addEventListener('click',()=> {
 })
 
 function checkLogIn(){
-  if(localStorage.getItem('username')) {
+  if(localStorage.getItem('User')) {
     var btnLogin = document.querySelector('.btnLogin-popup');
     var subMenu = document.querySelector('.sub-menu-wrap');
     var userPic = document.querySelector('.user-pic');
+    let storedUser = localStorage.getItem('User');
+    let currentUser = JSON.parse(storedUser);
     
     btnLogin.classList.add('hide');
     userPic.classList.add('active');
-    document.getElementById('myUsername').textContent = localStorage.getItem('username');
-  
+    
+    document.getElementById('myUsername').textContent = currentUser.userName;
   } 
 }
 
@@ -41,7 +43,7 @@ function checkLogIn(){
 const logout = document.getElementById("logout");
 logout.addEventListener('click', function(event) {
     event.preventDefault();
-    localStorage.removeItem('username');
+    localStorage.removeItem('User');
     window.location.href = logout.getAttribute('href');
 });
 

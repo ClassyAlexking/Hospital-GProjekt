@@ -1,3 +1,48 @@
+export class User {
+    constructor(email,password,username,phoneNumber,sex,birthdate,role,historyVer) {
+        this.userName = username;
+        this.passWord = password;
+        this.email = email;
+        this.phoneNumber=phoneNumber;
+        this.sex= sex;
+        this.birthdate= birthdate;
+        this.role=role;
+        this.historyVer=historyVer;
+    }
+
+    getUserName() {
+        return this.userName;
+    }
+
+    setUserName(userName) {
+        this.userName = userName;
+    }
+
+    setPassWord(passWord) {
+        this.passWord = passWord;
+    }
+
+    getPassWord() {
+        return this.passWord;
+    }
+
+    setID(id) {
+        this.id = id;
+    }
+
+    getID() {
+        return this.id;
+    }
+
+    addUser() {
+        // Implement functionality to add user (if needed)
+    }
+}
+// export class Doctor extends User {}
+
+
+
+
 class Medication {
     constructor(ID, name, number, manufacturer, expiryDate,) {
         this.ID = ID;
@@ -65,4 +110,4 @@ function main() {
     });
 }
 
-main();
+// main();

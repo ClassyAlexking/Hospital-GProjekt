@@ -17,7 +17,7 @@
     <nav class="navigation">
         <a href="index.html">Home</a>
         <a href="#">About</a>
-        <a href="#">Service</a>
+        <a href="service.html">Service</a>
         <a href="#">Contact</a>
         <button class="btnLogin-popup" onclick="window.location.href='login.html'">Login</button>
         <img src="images/profiles/user.png" id="user-sub-menu" class="user-pic">
@@ -65,14 +65,20 @@
     <div class="service">
       <i class="fa-solid fa-receipt"></i>
       <h2>Medical History</h2>
-      <p>Lorem ipsum. king king shit</p>
+      <p>NOT touching this shit</p>
     </div>
-    <div class="service">
+    <div id="DoctorTab" class="service">
       <i class="fa-solid fa-user-doctor"></i>
       <h2>Our Doctor</h2>
       <p>Lorem ipsum. king king shit</p>
     </div>
-    <div class="service">
+    <script>
+      const DoctorTab = document.getElementById("DoctorTab");
+      DoctorTab.addEventListener('click', function(event) {
+        window.location.href = "doctor.html";
+      });
+    </script>
+    <div id="EquipmentTab" class="service">
       <i class="fa-solid fa-kit-medical"></i>
       <h2>Equipment</h2>
       <p>Lorem ipsum. king king shit</p>
