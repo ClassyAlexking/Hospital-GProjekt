@@ -57,11 +57,11 @@
 
 
 <div class="container">
-  <h1>Buy Medicines</h1>
+  <h1>Book Appointment</h1>
   <div class="Medrow">
     <div id="AddMedicine" class="medicinesItem">
       <i class="fa-solid fa-plus"></i>
-      <h2>Add Medicine</h2>
+      <h2>Book Appointment</h2>
     </div>
     <script>
       document.getElementById("AddMedicine").addEventListener('click', function(event) {
@@ -80,33 +80,33 @@
       });
       </script>
       <div class="form-box login">
-          <h2>Add Medicine</h2>
+          <h2>Book Appointment</h2>
           <form>
               <div class="input-box">
                   <input type="text" id="medName" required>
                   <label>Name</label>
               </div>
               <div class="input-box">
-                  <input type="number" id="medNumber" required>
-                  <label>Number</label>
+                  <input type="text" id="medNumber" required>
+                  <label>Phone Number</label>
               </div>
               <div class="input-box">
                   <input type="text" id="medManuf" required>
-                  <label>Manufacturers</label>
+                  <label>Type Of Desease</label>  
               </div>
               <div class="input-box">
                   <input type="date" id="medExpDate" required>
-                  <label>Expire Date</label>
+                  <label>Time</label>
               </div>
               <div class="input-box">
-                <input type="number" id="medPrice" required>
-                <label>Price</label>
+                <input type="text" id="medPrice" required>
+                <label>Note</label>
               </div>
               <div class="error-notify hide">
                   Please fill in.
               </div>
           </form>
-          <button class="btn" id="addMedbtn">Add</button>
+          <button class="btn" id="addMedbtn">Book</button>
         </div>
       </div>
     </div>
