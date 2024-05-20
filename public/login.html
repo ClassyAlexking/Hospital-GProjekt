@@ -11,14 +11,14 @@
 <body>
     <header>
         <div class="logo">
-            <a href="index.html"><img src="images/logos/placeholder.jpg"></a>
+            <a href="index.html" title="Home"><img src="images/logos/placeholder.jpg" alt=""></a>
             <span>HospitalGP
         </div>
         <nav class="navigation">
             <a href="index.html">Home</a>
-            <a href="#">About</a>
-            <a href="#">Service</a>
-            <a href="#">Contact</a>
+            <a href="about.html">About</a>
+            <a href="service.html">Service</a>
+            <a href="contact.html">Contact</a>
             <button class="btnLogin-popup" onclick="window.location.href='login.html'">Login</button>
         </nav>
     </header>
@@ -32,14 +32,14 @@
                 <div class="input-box">
                     <span class="icon"><ion-icon
                     name="mail"></ion-icon></span>
-                    <input type="email" id="login-Email" required>
-                    <label>Email</label>
+                    <input type="email" id="login-Email" name="login-Email" required>
+                    <label for="login-Email">Email</label>
                 </div>
                 <div class="input-box">
                     <span class="icon"><ion-icon
                     name="lock-closed"></ion-icon></span>
-                    <input type="password" id="login-Password" required>
-                    <label>Password</label>
+                    <input type="password" id="login-Password" name="login-Password" required>
+                    <label for="login-Password">Password</label>
                 </div>
                 <div class="error-notify login">
                     Please fill in.
@@ -66,24 +66,25 @@
                 <div class="input-box">
                     <span class="icon"><ion-icon
                     name="mail"></ion-icon></span>
-                    <input type="email" id="register-Email" required>
-                    <label>Email</label>
+                    <input type="email" id="register-Email" name="register-Email" required>
+                    <label for="register-Email">Email</label>
                 </div>
 
                 <div class="input-box">
                     <span class="icon"><ion-icon
                     name="person"></ion-icon></span>
-                    <input type="text" id="register-Name" required>
-                    <label>Full Name</label>
+                    <input type="text" id="register-Name" name="register-Name" required>
+                    <label for="register-Name">Full Name</label>
                 </div>
 
                 <div class="input-box">
                     <span class="icon"><ion-icon
                     name="lock-closed"></ion-icon></span>
-                    <input type="password" id="register-Password" required>
-                    <label>Password</label>
+                    <input type="password" id="register-Password" name="register-Password" required>
+                    <label for="register-Password">Password</label>
                 </div>
                 <div class="select-box">
+                    <label for="enterRole">Select Your Role:</label>
                     <select id="enterRole" required>
                         <option value="User" disabled selected>Select Role</option>
                         <option value="User">User</option>
