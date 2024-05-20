@@ -26,6 +26,7 @@ userPic.addEventListener('click',()=> {
 
 function checkLogIn(){
   if(localStorage.getItem('User')) {
+    
     var btnLogin = document.querySelector('.btnLogin-popup');
     var subMenu = document.querySelector('.sub-menu-wrap');
     var userPic = document.querySelector('.user-pic');

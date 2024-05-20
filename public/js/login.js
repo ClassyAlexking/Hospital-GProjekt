@@ -75,10 +75,10 @@ loginBtn.addEventListener('click',()=> {
             // alert(snapshot.exists());
             // alert(enterPassword.value);
             // alert(snapshot.val().Password);
-            let currentUser = new User(snapshot.val().Email,snapshot.val().Password,snapshot.val().Username,
-                                snapshot.val().PhoneNumber,snapshot.val().Sex,snapshot.val().Birthdate,
-                                snapshot.val().Role,snapshot.val().HistoryVer);
             if(loginPassword.value == snapshot.val().Password){
+                let currentUser = new User(snapshot.val().Email,snapshot.val().Password,snapshot.val().Username,
+                                            snapshot.val().PhoneNumber,snapshot.val().Sex,snapshot.val().Birthdate,
+                                            snapshot.val().Role,snapshot.val().HistoryVer);
                 localStorage.setItem('User', JSON.stringify(currentUser));
                 window.location.href = "index.html";
             } else { 

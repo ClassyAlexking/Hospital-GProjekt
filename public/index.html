@@ -53,40 +53,205 @@
       </nav>
 </header>
 
-<section id="lunch">
-  <h2>Lunch</h2>
-  <p>Menu for Lunch:</p>
-  <ul>
-    <li>Grilled Chicken</li>
-    <li>Rice</li>
-    <li>Steamed Vegetables</li>
-    <li>Soup</li>
-    <li>Fruit Juice</li>
-  </ul>
+<section id="serviceSection">
+  <div class="container">
+    <h1>Our Service</h1>
+    <div class="row">
+      <div class="service">
+        <i class="fa-solid fa-hospital-user"></i>
+        <h2>Appointment</h2>
+        <p>Lorem ipsum. king king shit</p>
+      </div>
+      <div class="service">
+        <i class="fa-solid fa-receipt"></i>
+        <h2>Medical History</h2>
+        <p>NOT touching this shit</p>
+      </div>
+      <div id="DoctorTab" class="service">
+        <i class="fa-solid fa-user-doctor"></i>
+        <h2>Our Doctor</h2>
+        <p>Lorem ipsum. king king shit</p>
+      </div>
+      <script>
+        const DoctorTab = document.getElementById("DoctorTab");
+        DoctorTab.addEventListener('click', function(event) {
+          window.location.href = "doctor.html";
+        });
+      </script>
+      <div id="EquipmentTab" class="service">
+        <i class="fa-solid fa-kit-medical"></i>
+        <h2>Equipment</h2>
+        <p>Lorem ipsum. king king shit</p>
+      </div>
+      <script>
+        const EquipmentTab = document.getElementById("EquipmentTab");
+        EquipmentTab.addEventListener('click', function(event) {
+          window.location.href = "equipment.html";
+        });
+      </script>
+      <div id="MedicineTab" class="service">
+        <i class="fa-solid fa-pills"></i>
+        <h2>Medicines</h2>
+        <p>Lorem ipsum. king king shit</p>
+      </div>
+      <script>
+        const MedicineTab = document.getElementById("MedicineTab");
+        MedicineTab.addEventListener('click', function(event) {
+          window.location.href = "medicine.html";
+        });
+      </script>
+    </div>
+  </div>
 </section>
 
-<section id="dinner">
-  <h2>Dinner</h2>
-  <p>Menu for Dinner:</p>
-  <ul>
-    <li>Salmon</li>
-    <li>Mashed Potatoes</li>
-    <li>Green Salad</li>
-    <li>Bread Rolls</li>
-    <li>Water</li>
-  </ul>
+<section id="loginSection">
+  <div class="loginPage">
+    <div class="wrapper">
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form>
+                <div class="input-box">
+                    <span class="icon"><ion-icon
+                    name="mail"></ion-icon></span>
+                    <input type="email" id="login-Email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon
+                    name="lock-closed"></ion-icon></span>
+                    <input type="password" id="login-Password" required>
+                    <label>Password</label>
+                </div>
+                <div class="error-notify login">
+                    Please fill in.
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">
+                    Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+            </form>
+            <button class="btn" id="login">LOG IN</button>
+            <div class="login-register">
+                <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                <script>
+                    document.querySelector(".register-link").addEventListener('click', function(event) {
+                        event.preventDefault(); // Prevent the default action
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="form-box register">
+            <h2>Registration</h2>
+            <form>
+                <div class="input-box">
+                    <span class="icon"><ion-icon
+                    name="mail"></ion-icon></span>
+                    <input type="email" id="register-Email" required>
+                    <label>Email</label>
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon
+                    name="person"></ion-icon></span>
+                    <input type="text" id="register-Name" required>
+                    <label>Full Name</label>
+                </div>
+
+                <div class="input-box">
+                    <span class="icon"><ion-icon
+                    name="lock-closed"></ion-icon></span>
+                    <input type="password" id="register-Password" required>
+                    <label>Password</label>
+                </div>
+                <div class="select-box">
+                    <select id="enterRole" required>
+                        <option value="User" disabled selected>Select Role</option>
+                        <option value="User">User</option>
+                        <option value="Staff">Staff</option>
+                        <option value="Doctor">Doctor</option>
+                        <option value="Nurse">Nurse</option>
+                        <!-- try to make another role for admin -->
+                    </select>
+                </div>
+                <div class="error-notify register">
+                    Please fill in.
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">
+                    I agree to the terms & conditions</label>
+                </div>
+            </form>
+            <button class="btn" id="register">Register</button>
+            <div class="login-register">
+                <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                <script>
+                    document.querySelector(".login-link").addEventListener('click', function(event) {
+                        event.preventDefault(); // Prevent the default action
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
 </section>
 
-<section id="snacks">
-  <h2>Snacks</h2>
-  <p>Menu for Snacks:</p>
-  <ul>
-    <li>Yogurt</li>
-    <li>Fruit</li>
-    <li>Nuts</li>
-    <li>Granola Bars</li>
-    <li>Smoothies</li>
-  </ul>
+<section id="medicineSection">
+  <div class="container">
+    <h1>Buy Medicines</h1>
+    <div class="Medrow">
+      <div id="AddMedicine" class="medicinesItem">
+        <i class="fa-solid fa-plus"></i>
+        <h2>Add Medicine</h2>
+      </div>
+      <script>
+        document.getElementById("AddMedicine").addEventListener('click', function(event) {
+          document.querySelector('.Medicines-popup').classList.add("active");
+        });
+      </script>
+    </div>
+    <div class="Medicines-popup">
+      <div class="wrapper">
+        <span class="icon-close">
+          <i class="fa-solid fa-xmark"></i>
+        </span>
+        <script>
+          document.querySelector('.icon-close').addEventListener('click', function(event) {
+          document.querySelector('.Medicines-popup').classList.remove("active");
+        });
+        </script>
+        <div class="form-box login">
+            <h2>Add Medicine</h2>
+            <form>
+                <div class="input-box">
+                    <input type="text" id="medName" required>
+                    <label>Name</label>
+                </div>
+                <div class="input-box">
+                    <input type="number" id="medNumber" required>
+                    <label>Number</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="medManuf" required>
+                    <label>Manufacturers</label>
+                </div>
+                <div class="input-box">
+                    <input type="date" id="medExpDate" required>
+                    <label>Expire Date</label>
+                </div>
+                <div class="input-box">
+                  <input type="number" id="medPrice" required>
+                  <label>Price</label>
+                </div>
+                <div class="error-notify hide">
+                    Please fill in.
+                </div>
+            </form>
+            <button class="btn" id="addMedbtn">Add</button>
+          </div>
+        </div>
+      </div>
+  </div>
 </section>
 
 <section id="medical">
@@ -128,12 +293,9 @@
   </ul>
 </section>
 
-<section id="contact">
-  <h2>Contact us:</h2>
-
-</section>
 
 </body>
+<script src="https://kit.fontawesome.com/cbe61eb727.js" crossorigin="anonymous"></script>
 <script type="module" src="js/index.js"></script>
 <!-- <script>
   // Initial variable values

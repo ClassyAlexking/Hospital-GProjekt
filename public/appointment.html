@@ -57,11 +57,11 @@
 
 
 <div class="container">
-  <h1>Book Appointment</h1>
+  <h1>Buy Medicines</h1>
   <div class="Medrow">
     <div id="AddMedicine" class="medicinesItem">
       <i class="fa-solid fa-plus"></i>
-      <h2>Book Appointment</h2>
+      <h2>Add Medicine</h2>
     </div>
     <script>
       document.getElementById("AddMedicine").addEventListener('click', function(event) {
@@ -81,32 +81,33 @@
       </script>
       <div class="form-box login">
           <h2>Book Appointment</h2>
+          <p>Default Name</p>
           <form>
               <div class="input-box">
-                  <input type="text" id="medName" required>
-                  <label>Name</label>
+                  <input type="text" id="UserName" required>
+                  <label>Your Name</label>
               </div>
               <div class="input-box">
-                  <input type="text" id="medNumber" required>
-                  <label>Phone Number</label>
+                  <input type="number" id="UserNumber" required>
+                  <label>Your Number</label>
               </div>
               <div class="input-box">
-                  <input type="text" id="medManuf" required>
-                  <label>Type Of Desease</label>  
+                  <input type="email" id="UserEmail" required>
+                  <label>Your Email</label>
               </div>
               <div class="input-box">
-                  <input type="date" id="medExpDate" required>
-                  <label>Time</label>
+                  <input type="date" id="BookDate" required>
+                  <label>Book Date</label>
               </div>
               <div class="input-box">
-                <input type="text" id="medPrice" required>
-                <label>Note</label>
+                <input type="time" id="medPrice" required>
+                <label>Book Time</label>
               </div>
               <div class="error-notify hide">
                   Please fill in.
               </div>
           </form>
-          <button class="btn" id="addMedbtn">Book</button>
+          <button class="btn" id="addMedbtn">Add</button>
         </div>
       </div>
     </div>
@@ -122,7 +123,7 @@
 </script>
 <script src="https://kit.fontawesome.com/cbe61eb727.js" crossorigin="anonymous"></script>
 <script type="module" src="js/index.js"></script>
-<script type="module" src="js/doctor.js"></script>
+<script type="module" src="js/appointment.js"></script>
 <!-- <script>
   // Initial variable values
   var userPic = document.getElementById('user-sub-menu');
