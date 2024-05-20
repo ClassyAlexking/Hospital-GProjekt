@@ -11,40 +11,40 @@
 <body>
   <header>
     <div class="logo">
-        <a href="index.html"><img src="images/logos/placeholder.jpg"></a>
+        <a href="index.html" title="Home"><img src="images/logos/placeholder.jpg" alt=""></a>
         <span>HospitalGP
     </div>
     <nav class="navigation">
         <a href="index.html">Home</a>
-        <a href="#">About</a>
-        <a href="#">Service</a>
-        <a href="#">Contact</a>
+        <a href="about.html">About</a>
+        <a href="service.html">Service</a>
+        <a href="contact.html">Contact</a>
         <button class="btnLogin-popup" onclick="window.location.href='login.html'">Login</button>
-        <img src="images/profiles/user.png" id="user-sub-menu" class="user-pic">
+        <img src="images/profiles/user.png" alt="" id="user-sub-menu" class="user-pic">
         <div class="sub-menu-wrap">
           <div class="sub-menu">
             <div class="user-info">
-              <img src="images/profiles/user.png">
+              <img src="images/profiles/user.png" alt="">
               <h3 id="myUsername">Username</h3>
             </div>
             <hr>
             <a href="#" class="sub-menu-link">
-              <img src="images/profiles/profile.png">
+              <img src="images/profiles/profile.png" alt="">
               <p>Edit Profile</p>
               <span>></span>
             </a>
             <a href="#" class="sub-menu-link">
-              <img src="images/profiles/setting.png">
+              <img src="images/profiles/setting.png" alt="">
               <p>Settings & Privacy</p>
               <span>></span>
             </a>
             <a href="index.html" class="sub-menu-link">
-              <img src="images/profiles/help.png">
+              <img src="images/profiles/help.png" alt="">
               <p>Help & Support</p>
               <span>></span>
             </a>
             <a href="index.html" id="logout" class="sub-menu-link">
-              <img src="images/profiles/logout.png">
+              <img src="images/profiles/logout.png" alt="">
               <p>Logout</p>
               <span>></span>
             </a>
@@ -83,24 +83,24 @@
           <h2>Manage Equipment</h2>
           <form>
               <div class="input-box">
-                  <input type="text" id="medName" required>
-                  <label>Name</label>
+                  <input type="text" id="equipName" name="equipName" required>
+                  <label for="equipName">Name</label>
               </div>
               <div class="input-box">
-                  <input type="number" id="medNumber" required>
-                  <label>Number</label>
+                  <input type="number" id="equipNumber" name="equipNumber" required>
+                  <label for="equipNumber">Number</label>
               </div>
               <div class="input-box">
-                  <input type="text" id="medManuf" required>
-                  <label>Manufacturers</label>
+                  <input type="text" id="equipManuf" name="equipManuf" required>
+                  <label for="equipManuf">Manufacturers</label>
               </div>
               <div class="input-box">
-                  <input type="date" id="medExpDate" required>
-                  <label>Expire Date</label>
+                  <input type="date" id="equipExpDate" name="equipExpDate" required>
+                  <label for="equipExpDate">Expire Date</label>
               </div>
               <div class="input-box">
-                <input type="number" id="medPrice" required>
-                <label>Price</label>
+                <input type="number" id="equipPrice" name="equipPrice" required>
+                <label for="equipPrice">Price</label>
               </div>
               <div class="error-notify hide">
                   Please fill in.

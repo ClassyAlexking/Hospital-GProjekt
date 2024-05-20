@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Medicines</title>
+  <title>Appointment</title>
 
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -11,40 +11,40 @@
 <body>
   <header>
     <div class="logo">
-        <a href="index.html"><img src="images/logos/placeholder.jpg"></a>
+        <a href="index.html" title="Home"><img src="images/logos/placeholder.jpg" alt=""></a>
         <span>HospitalGP
     </div>
     <nav class="navigation">
         <a href="index.html">Home</a>
-        <a href="#">About</a>
-        <a href="#">Service</a>
-        <a href="#">Contact</a>
+        <a href="about.html">About</a>
+        <a href="service.html">Service</a>
+        <a href="contact.html">Contact</a>
         <button class="btnLogin-popup" onclick="window.location.href='login.html'">Login</button>
-        <img src="images/profiles/user.png" id="user-sub-menu" class="user-pic">
+        <img src="images/profiles/user.png" alt="" id="user-sub-menu" class="user-pic">
         <div class="sub-menu-wrap">
           <div class="sub-menu">
             <div class="user-info">
-              <img src="images/profiles/user.png">
+              <img src="images/profiles/user.png" alt="">
               <h3 id="myUsername">Username</h3>
             </div>
             <hr>
             <a href="#" class="sub-menu-link">
-              <img src="images/profiles/profile.png">
+              <img src="images/profiles/profile.png" alt="">
               <p>Edit Profile</p>
               <span>></span>
             </a>
             <a href="#" class="sub-menu-link">
-              <img src="images/profiles/setting.png">
+              <img src="images/profiles/setting.png" alt="">
               <p>Settings & Privacy</p>
               <span>></span>
             </a>
             <a href="index.html" class="sub-menu-link">
-              <img src="images/profiles/help.png">
+              <img src="images/profiles/help.png" alt="">
               <p>Help & Support</p>
               <span>></span>
             </a>
             <a href="index.html" id="logout" class="sub-menu-link">
-              <img src="images/profiles/logout.png">
+              <img src="images/profiles/logout.png" alt="">
               <p>Logout</p>
               <span>></span>
             </a>
@@ -59,48 +59,48 @@
 <div class="container">
   <h1>Book Appointment</h1>
   <div class="Medrow">
-    <div id="AddMedicine" class="medicinesItem">
+    <div id="AddAppointment" class="appointmentsItem">
       <i class="fa-solid fa-plus"></i>
       <h2>Book Appointment</h2>
     </div>
     <script>
-      document.getElementById("AddMedicine").addEventListener('click', function(event) {
-        document.querySelector('.Medicines-popup').classList.add("active");
+      document.getElementById("AddAppointment").addEventListener('click', function(event) {
+        document.querySelector('.Appointments-popup').classList.add("active");
       });
     </script>
   </div>
-  <div class="Medicines-popup">
+  <div class="Appointments-popup">
     <div class="wrapper">
       <span class="icon-close">
         <i class="fa-solid fa-xmark"></i>
       </span>
       <script>
         document.querySelector('.icon-close').addEventListener('click', function(event) {
-        document.querySelector('.Medicines-popup').classList.remove("active");
+        document.querySelector('.Appointments-popup').classList.remove("active");
       });
       </script>
       <div class="form-box login">
           <h2>Book Appointment</h2>
           <form>
               <div class="input-box">
-                  <input type="text" id="medName" required>
-                  <label>Name</label>
+                  <input type="text" id="medName" name="medName" required>
+                  <label for="medName">Name</label>
               </div>
               <div class="input-box">
-                  <input type="text" id="medNumber" required>
-                  <label>Phone Number</label>
+                  <input type="text" id="medNumber" name="medNumber" required>
+                  <label for="medNumber">Phone Number</label>
               </div>
               <div class="input-box">
-                  <input type="text" id="medManuf" required>
-                  <label>Type Of Desease</label>  
+                  <input type="text" id="medManuf" name="medManuf" required>
+                  <label for="medManuf">Type Of Desease</label>  
               </div>
               <div class="input-box">
-                  <input type="date" id="medExpDate" required>
-                  <label>Time</label>
+                  <input type="date" id="medExpDate" name="medExpDate" required>
+                  <label for="medExpDate">Time</label>
               </div>
               <div class="input-box">
-                <input type="text" id="medPrice" required>
-                <label>Note</label>
+                <input type="text" id="medPrice" name="medPrice" required>
+                <label for="medPrice">Note</label>
               </div>
               <div class="error-notify hide">
                   Please fill in.
