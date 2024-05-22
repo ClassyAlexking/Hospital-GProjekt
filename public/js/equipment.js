@@ -17,7 +17,7 @@ from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
 
 const db = getDatabase();
 
-function makeMedicineItems(medId, medName, medNumber, medManuf, medExpDate, medPRice){
+function makeMedicineItems(medId, medName, medNumber, medManuf, equipStatus){
     var container = document.querySelector(".Medrow");
     var newMedicineItem = document.createElement("div");
     newMedicineItem.classList.add("medicinesItem");
@@ -46,9 +46,8 @@ function makeMedicineItems(medId, medName, medNumber, medManuf, medExpDate, medP
     newMedicineItem.innerHTML = `
     ${command}
     <h2>${medName}</h2>
-    <p>Expire Date: ${medExpDate}</p>
+    <h5>${equipStatus}</h5>
     <p>Number: ${medNumber}</p>
-    <p>Price: ${medPRice} đ</p>
     `;
     container.appendChild(newMedicineItem);
     container.insertBefore(newMedicineItem, document.getElementById("AddMedicine"));
@@ -100,22 +99,17 @@ function calculateTotal(price = 0) {
 
 document.getElementById("addMedbtn").addEventListener('click', function(event) {
 
-    var medName = document.getElementById("medName").value;
-    var medNumber = document.getElementById("medNumber").value;
-    var medManuf = document.getElementById("medManuf").value;
-    var medExpDate = document.getElementById("medExpDate").value;
-    var medPrice = document.getElementById("medPrice").value;
+    var medName = document.getElementById("equipName").value;
+    var medNumber = document.getElementById("equipNumber").value;
+    var medManuf = document.getElementById("equipManuf").value;
+    var medStatus = "Perfect";
     var medVersion = 1;
-    var parts = medExpDate.split('-');
-    var day = parseInt(parts[2]);
-    var month = parseInt(parts[1]);
-    var year = parseInt(parts[0]);
     var currentDate = new Date();
     var curday = currentDate.getDate();
     var curmonth = currentDate.getMonth() + 1;
     var curyear = currentDate.getFullYear();
 
-    if (medName == '' || medNumber == '' || medManuf == '' || medExpDate == '') {
+    if (medName == '' || medNumber == '' || medManuf == '') {
         var errorNotify = document.querySelector('.error-notify.hide');
         errorNotify.classList.remove('hide');
         return;
@@ -123,27 +117,26 @@ document.getElementById("addMedbtn").addEventListener('click', function(event) {
 
     var medID = (medName.length < 3 ? (medName+'000').substring(0,3) : medName.substring(0,3)) +
             (medManuf.length < 3 ? (medManuf+'000').substring(0,3) : medManuf.substring(0,3)) +
-            (((month - 1) * 31 + (day - 1)) + (year % 100)* 1000);
+            (((curmonth - 1) * 31 + (curday - 1)) + (curyear % 100)* 1000);
         //this thing cant handle '.'
         
     const dbref = ref(db);
-    get(child(dbref, "Medicines/" + medID))
+    get(child(dbref, "Equipment/" + medID))
     .then((snapshot)=>{
         if(snapshot.exists()){
             alert("There already exist a similar medicine. Do you want to update");
         } else {
-            set(ref(db, "Medicines/"+ medID),{
+            set(ref(db, "Equipment/"+ medID),{
                 Name: medName ,
                 Number: parseInt(medNumber),
                 Manufacturer: medManuf,
-                Expire: medExpDate,
                 Version: medVersion,
             })
             .then(()=>{
-                set(ref(db, "Medicines/"+ medID +"/History/"+ medVersion),{
+                set(ref(db, "Equipment/"+ medID +"/History/"+ medVersion),{
                     Date: curyear + '-' + curmonth + '-' + curday,
                     Number: parseInt(medNumber),
-                    Price: medPrice,
+                    Status: medStatus
                 })
                 alert("Data added successfully");
                 document.querySelector('.Medicines-popup').classList.remove("active");
@@ -156,20 +149,20 @@ document.getElementById("addMedbtn").addEventListener('click', function(event) {
     .catch((error)=>{
         alert(error)
     })
-    makeMedicineItems(medID, medName, medNumber, medManuf, medExpDate, medPrice);
+    makeMedicineItems(medID, medName, medNumber, medManuf, medStatus);
 });
 
 //auto run medicine
 function getAllData(){
     const dbRef = ref(db);
     
-    get(child(dbRef, "Medicines"))
+    get(child(dbRef, "Equipment"))
     .then((snapshot)=>{
         snapshot.forEach(childSnapshot => {
-            get(child(dbRef, "Medicines/" + childSnapshot.key + "/History/" + childSnapshot.val().Version))
+            get(child(dbRef, "Equipment/" + childSnapshot.key + "/History/" + childSnapshot.val().Version))
             .then((histSnapshot) =>{
                     makeMedicineItems(childSnapshot.key, childSnapshot.val().Name, childSnapshot.val().Number,
-                    childSnapshot.val().Manufacturer, childSnapshot.val().Expire, histSnapshot.val().Price);
+                    childSnapshot.val().Manufacturer, histSnapshot.val().Status);
             });
             
         });

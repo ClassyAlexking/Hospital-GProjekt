@@ -44,7 +44,7 @@ function makeDoctorItems(email, speciality, experience){
             (((curmonth - 1) * 31 + (curday - 1)) + (curyear % 100)* 1000);
     
 
-            var command = '<img src="images/default_item.png" width="100" height="100">';
+            var command = '<img src="images/default_user.png" width="100" height="100">';
             newMedicineItem.innerHTML = `
             ${command}
             <h2>${snapshot.val().Username}</h2>

@@ -126,10 +126,10 @@ function makeStaffItems(email, role){
     newMedicineItem.classList.add("medicinesItem");
     newMedicineItem.id = email;
 
-    var command = '<img src="images/default_item.png" width="100" height="100">';
+    var command = '<img src="images/default_user.png" width="100" height="100">';
     newMedicineItem.innerHTML = `
     ${command}
-    <h2>${email}</h2>
+    <h3>${email}</h2>
     <p>Role: ${role}</p>
     `;
     container.appendChild(newMedicineItem);

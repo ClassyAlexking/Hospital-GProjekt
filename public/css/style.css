@@ -134,6 +134,7 @@ body {
     max-height: 0px;
     overflow: hidden;
     transition: .2s;
+    z-index: 9999;
 }
 .sub-menu-wrap.active{
     max-height: 400px;
