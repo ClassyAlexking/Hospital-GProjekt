@@ -57,11 +57,17 @@
 <div class="container">
   <h1>Our Service</h1>
   <div class="row">
-    <div class="service">
+    <div id="AppointTab" class="service">
       <i class="fa-solid fa-hospital-user"></i>
       <h2>Appointment</h2>
       <p>Lorem ipsum. king king shit</p>
     </div>
+    <script>
+      const AppointTab = document.getElementById("AppointTab");
+      AppointTab.addEventListener('click', function(event) {
+        window.location.href = "appointment.html";
+      });
+    </script>
     <div class="service">
       <i class="fa-solid fa-receipt"></i>
       <h2>Medical History</h2>

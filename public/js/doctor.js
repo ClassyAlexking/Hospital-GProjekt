@@ -19,6 +19,8 @@ const db = getDatabase();
 
 function makeDoctorItems(email, speciality, experience){
     const dbRef = ref(db);
+    let storedUser = localStorage.getItem('User');
+    let currentUser = JSON.parse(storedUser);
     
     get(child(dbRef, "Users/" + email))
     .then((snapshot)=>{
@@ -30,6 +32,17 @@ function makeDoctorItems(email, speciality, experience){
             var newMedicineItem = document.createElement("div");
             newMedicineItem.classList.add("medicinesItem");
             newMedicineItem.id = email;
+
+            var currentDate = new Date();
+            var curday = currentDate.getDate();
+            var curmonth = currentDate.getMonth() + 1;
+            var curyear = currentDate.getFullYear();
+            var UserNameID = currentUser.userName;
+            var DoctorNameID = snapshot.val().Username
+            var appointID = (UserNameID.length < 3 ? (UserNameID+'000').substring(0,3) : UserNameID.substring(0,3)) +
+            (DoctorNameID.length < 3 ? (DoctorNameID+'000').substring(0,3) : DoctorNameID.substring(0,3)) +
+            (((curmonth - 1) * 31 + (curday - 1)) + (curyear % 100)* 1000);
+    
 
             var command = '<img src="images/default_item.png" width="100" height="100">';
             newMedicineItem.innerHTML = `
@@ -45,14 +58,51 @@ function makeDoctorItems(email, speciality, experience){
                 document.querySelector('.Medicines-popup').classList.add("active");
                 document.getElementById("Username").textContent = snapshot.val().Username;
                 document.getElementById("Email").textContent = snapshot.val().Email;
+
+                document.getElementById("Username2").textContent = "Doctor: " + snapshot.val().Username;
+                document.getElementById("Email2").textContent = snapshot.val().Email;
+
+                document.getElementById("Username22").textContent = "Patient: " +currentUser.userName;
+                document.getElementById("Email22").textContent = appointID;
+
                 document.getElementById("AppointBtn").addEventListener('click', function() {
                     if(localStorage.getItem('User')) {
-                        localStorage.setItem('DoctorEmail', snapshot.val().Email);
-                        window.location.href = "appointment.html";
+                            document.getElementById("AppointInfo").classList.add("active");
                     } else {
                         window.location.href = "login.html";
                     }
-                    alert(`Email: ${email}`);
+                    // alert(`Email: ${email}`);
+                });
+
+
+
+                document.getElementById("AppointDoneBtn").addEventListener('click', function() {
+                    // addAppointRequest(snapshot.val().Email);
+                    // alert(`Email: ${email}`);
+                    var UserAppointDate = document.getElementById("UserAppointDate").value;
+                    set(ref(db, "Users/"+ currentUser.email + "/Appointment/"+ appointID),{
+                        appointID
+                    });
+
+                    set(ref(db, "Users/"+ snapshot.val().Email + "/Appointment/"+ appointID),{
+                        appointID
+                    });
+
+                    set(ref(db, "Appointment/"+ appointID),{
+                        appointID,
+                        date: UserAppointDate,
+                        doctor: snapshot.val().Email,
+                        patient: currentUser.email
+                    })
+                    .then(()=>{
+                        alert("Data added successfully");
+                        // window.location.href = "login.html";
+                    })
+                    .catch((error)=>{
+                        alert(error);
+                    });
+
+                    window.location.href = "appointment.html";
                 });
             });
         } else {
@@ -88,6 +138,26 @@ function makeDoctorItems(email, speciality, experience){
     //         addRoleReq(email,role);
     //         alert(`Email: ${email}, Role: ${role}`);
     //     });
+    // });
+}
+
+
+function addAppointRequest(email) {
+    // if (registerPassword.value == '' || registerEmail.value == '' || registerName.value == '') {
+    //     errorRegister.classList.add('active');
+    //     return;
+    // }
+    alert(email + "FUCK YOU");
+    // set(ref(db, "Doctor/"+ email + "/"),{
+    //     Name: enterName.value,
+    //     ID: enterID.value,
+    //     Age: enterAge.value
+    // })
+    // .then(()=>{
+    //     alert("Data added successfully");
+    // })
+    // .catch((error)=>{
+    //     alert(error);
     // });
 }
 

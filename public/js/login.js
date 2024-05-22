@@ -15,7 +15,7 @@ const app = initializeApp(firebaseConfig);
 import {getDatabase, ref, get, set, child, update, remove}
 from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
 import {User} from "./class.js";
-
+import { currentUser, updateDoc, updateUser } from './module.js';
 
 
 const db = getDatabase();
@@ -76,11 +76,50 @@ loginBtn.addEventListener('click',()=> {
             // alert(enterPassword.value);
             // alert(snapshot.val().Password);
             if(loginPassword.value == snapshot.val().Password){
-                let currentUser = new User(snapshot.val().Email,snapshot.val().Password,snapshot.val().Username,
-                                            snapshot.val().PhoneNumber,snapshot.val().Sex,snapshot.val().Birthdate,
-                                            snapshot.val().Role,snapshot.val().HistoryVer);
-                localStorage.setItem('User', JSON.stringify(currentUser));
-                window.location.href = "index.html";
+                // let currentUser = new User(snapshot.val().Email,snapshot.val().Password,snapshot.val().Username,
+                //                             snapshot.val().PhoneNumber,snapshot.val().Sex,snapshot.val().Birthdate,
+                //                             snapshot.val().Role,snapshot.val().HistoryVer);
+                if (snapshot.val().Role != "User"){
+                    alert("WTF");
+                    get(child(dbref, snapshot.val().Role+ "/" + loginEmail.value))
+                    .then((childsnapshot)=>{
+                        if(childsnapshot.exists()){
+                            const user = {
+                                email: snapshot.val().Email,
+                                password: snapshot.val().Password,
+                                username: snapshot.val().Username,
+                                phoneNumber: snapshot.val().PhoneNumber,
+                                sex: snapshot.val().Sex,
+                                birthdate: snapshot.val().Birthdate,
+                                role: snapshot.val().Role,
+                                historyVer: snapshot.val().HistoryVer,
+                                specialty: childsnapshot.val().Specialty,
+                                yearOfExp: childsnapshot.val().YearOfExp,
+                            };
+                            alert(user.specialty);
+                            updateDoc(user); // Update the currentUser object
+                            alert(currentUser.userName);
+                            alert(currentUser.specialty);
+                            localStorage.setItem('User', JSON.stringify(currentUser));
+                            window.location.href = "index.html";
+                        }
+                    })
+                } else {
+                    const user = {
+                        email: snapshot.val().Email,
+                        password: snapshot.val().Password,
+                        username: snapshot.val().Username,
+                        phoneNumber: snapshot.val().PhoneNumber,
+                        sex: snapshot.val().Sex,
+                        birthdate: snapshot.val().Birthdate,
+                        role: snapshot.val().Role,
+                        historyVer: snapshot.val().HistoryVer
+                    };
+                    updateUser(user); // Update the currentUser object
+                    alert(currentUser.userName);
+                    localStorage.setItem('User', JSON.stringify(currentUser));
+                    window.location.href = "index.html";
+                }
             } else { 
             alert("Wrong password!");
             }

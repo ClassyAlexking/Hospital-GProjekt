@@ -52,6 +52,16 @@
         </div>
       </nav>
 </header>
+<section>
+  <button id="myButton">Click Me</button>
+  <script>
+    function myFunction() {
+      alert('Button was clicked!');
+    }
+    document.getElementById('myButton').addEventListener('click', myFunction);
+
+  </script>
+</section>
 
 <section id="serviceSection">
   <div class="container">
@@ -297,6 +307,7 @@
 </body>
 <script src="https://kit.fontawesome.com/cbe61eb727.js" crossorigin="anonymous"></script>
 <script type="module" src="js/index.js"></script>
+<script type="module" src="js/module.js"></script>
 <!-- <script>
   // Initial variable values
   var userPic = document.getElementById('user-sub-menu');

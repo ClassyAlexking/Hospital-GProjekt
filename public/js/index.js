@@ -15,6 +15,8 @@ const app = initializeApp(firebaseConfig);
 import {getDatabase, ref, get, set, child, update, remove}
 from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
 
+import { currentUser, updateUser } from './module.js';
+
 const db = getDatabase();
 
 var userPic = document.querySelector('.user-pic');

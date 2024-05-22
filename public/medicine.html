@@ -79,7 +79,7 @@
         document.querySelector('.Medicines-popup').classList.remove("active");
       });
       </script>
-      <div class="form-box login">
+        <div class="form-box login">
           <h2>Add Medicine</h2>
           <form>
               <div class="input-box">
@@ -110,7 +110,36 @@
         </div>
       </div>
     </div>
+<!-- POP UP buy medicine -->
+    <div id = "BuyPopup" class="Medicines-popup">
+      <div class="wrapper">
+        <span id = "close2" class="icon-close">
+          <i class="fa-solid fa-xmark"></i>
+        </span>
+        <script>
+          document.getElementById("close2").addEventListener('click', function(event) {
+          document.getElementById("BuyPopup").classList.remove("active");
+        });
+        </script>
+          <div class="form-box login">
+            <h2>Buy Medicine</h2>
+            <form>
+              <label id="PricePerMed">Price Per Med: 0 đ</label>
+                <div class="input-box">
+                  <input type="number" id="buyNumber" name="buyNumber" required>
+                  <label for="medPrice">Buy Number</label>
+                </div>
+                <!-- <div class="input-box">
+                    Please fill in.
+                </div> -->
+            </form>
+            <p id="totalPrice">Total Price: $0.00</p>
+            <button class="btn" id="addMedbtn">BUY</button>
+          </div>
+        </div>
+      </div>
 </div>
+
 
 
 

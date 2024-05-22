@@ -62,8 +62,40 @@ export class User {
 export class Doctor extends User {
     constructor(email,password,username,phoneNumber,sex,birthdate,role,historyVer,specialty,yearOfExp) {
         super(email,password,username,phoneNumber,sex,birthdate,role,historyVer);
+        alert("THIS");
         this.specialty = specialty;
+        alert(specialty);
         this.yearOfExp = yearOfExp;
+    }
+}
+
+export class DoctorList {
+    constructor() {
+        this.doctors = [];
+    }
+
+    // Method to add a doctor to the list
+    addDoctor(doctor) {
+        if (doctor instanceof Doctor) {
+            this.doctors.push(doctor);
+        } else {
+            throw new Error("Only Doctor instances can be added to the list.");
+        }
+    }
+
+    // Method to remove a doctor by email
+    removeDoctor(email) {
+        this.doctors = this.doctors.filter(doctor => doctor.email !== email);
+    }
+
+    // Method to find a doctor by email
+    findDoctor(email) {
+        return this.doctors.find(doctor => doctor.email === email);
+    }
+
+    // Method to get all doctors
+    getAllDoctors() {
+        return this.doctors;
     }
 }
 
@@ -113,8 +145,27 @@ class Warehouse {
 }
 
 // Main function to test the functionality
+
+export let currentUser = {
+    email: "",
+    password: "",
+    username: "",
+    phoneNumber: "",
+    sex: "",
+    birthdate: "",
+    role: "",
+    historyVer: ""
+};
+
+export function updateUser(updateUser) {
+    Object.assign(currentUser, updateUser);
+}
+
 function main() {
-    // Create medications
+    // Init all the data class
+    //
+
+
     let med1 = new Medication("Paracetamol", "ABC Pharmaceuticals", new Date(2024, 4, 30));
     let med2 = new Medication("Aspirin", "XYZ Pharmaceuticals", new Date(2023, 6, 15));
     let med3 = new Medication("Ibuprofen", "DEF Pharmaceuticals", new Date(2022, 10, 10));

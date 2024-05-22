@@ -55,6 +55,66 @@
 
 
 
+<div class="container">
+  <h1>Appointment</h1>
+  <div class="Medrow">
+    <div id="AddAppoint" class="medicinesItem">
+      <i class="fa-solid fa-plus"></i>
+      <h2>Add Appointment</h2>
+    </div>
+    <!-- <script>
+      document.getElementById("AddMedicine").addEventListener('click', function(event) {
+        document.querySelector('.Medicines-popup').classList.add("active");
+      });
+    </script> -->
+    <script>
+      document.getElementById("AddAppoint").addEventListener('click', function(event) {
+        window.location.href = "doctor.html";
+      });
+    </script>
+  </div>
+  <div class="Medicines-popup">
+    <div class="wrapper">
+      <span class="icon-close">
+        <i class="fa-solid fa-xmark"></i>
+      </span>
+      <script>
+        document.querySelector('.icon-close').addEventListener('click', function(event) {
+        document.querySelector('.Medicines-popup').classList.remove("active");
+      });
+      </script>
+      <div class="form-box login">
+          <h2>Add Medicine</h2>
+          <form>
+              <div class="input-box">
+                  <input type="text" id="medName" name="medName" required>
+                  <label for="medName">Name</label>
+              </div>
+              <div class="input-box">
+                  <input type="number" id="medNumber" name="medNumber" required>
+                  <label for="medNumber">Number</label>
+              </div>
+              <div class="input-box">
+                  <input type="text" id="medManuf" name="medManuf" required>
+                  <label for="medManuf">Manufacturers</label>
+              </div>
+              <div class="input-box">
+                  <input type="date" id="medExpDate" name="medExpDate" required>
+                  <label for="medExpDate">Expire Date</label>
+              </div>
+              <div class="input-box">
+                <input type="number" id="medPrice" name="medPrice" required>
+                <label for="medPrice">Price</label>
+              </div>
+              <div class="error-notify hide">
+                  Please fill in.
+              </div>
+          </form>
+          <button class="btn" id="addMedbtn">Add</button>
+        </div>
+      </div>
+    </div>
+</div>
 
 <div class="container">
   <h1>Buy Medicines</h1>

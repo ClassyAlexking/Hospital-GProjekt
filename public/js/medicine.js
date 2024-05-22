@@ -24,8 +24,8 @@ function makeMedicineItems(medId, medName, medNumber, medManuf, medExpDate, medP
     newMedicineItem.id = medId;
 
     var img = new Image();
-    img.src = `images/medicines/${medName}.png`;
-    var command = '<img src="images/default_item.png" width="100" height="100">';
+    // img.src = `images/medicines/${medName}.png`;
+    var command = '<img src="images/default_item.png" width="80" height="80">';
     // img.onload = function() {
     //     // Image found, display it
     //     container.innerHTML = `
@@ -46,11 +46,57 @@ function makeMedicineItems(medId, medName, medNumber, medManuf, medExpDate, medP
     newMedicineItem.innerHTML = `
     ${command}
     <h2>${medName}</h2>
-    <p>Price: ${medPRice}</p>
+    <h5>${medExpDate}</h5>
+    <p>Number: ${medNumber}</p>
+    <p>Price: ${medPRice} đ</p>
     `;
     container.appendChild(newMedicineItem);
     container.insertBefore(newMedicineItem, document.getElementById("AddMedicine"));
+
+    newMedicineItem.addEventListener('click', function(event) {
+
+        document.getElementById("BuyPopup").classList.add("active");
+        document.getElementById("PricePerMed").textContent = "Price Per Med: " + medPRice + " đ";
+        
+        
+        document.getElementById('buyNumber').addEventListener('input', calculateTotal(medPRice));
+        // document.getElementById("Email").textContent = snapshot.val().Email;
+
+        // document.getElementById("Username2").textContent = snapshot.val().Username;
+        // document.getElementById("Email2").textContent = snapshot.val().Email;
+
+        // document.getElementById("AppointBtn").addEventListener('click', function() {
+        //     if(localStorage.getItem('User')) {
+        //             document.getElementById("AppointInfo").classList.add("active");
+        //     } else {
+        //         window.location.href = "login.html";
+        //     }
+        //     // alert(`Email: ${email}`);
+        // });
+
+
+
+        // document.getElementById("AppointDoneBtn").addEventListener('click', function() {
+        //     addAppointRequest(snapshot.val().Email);
+        //     // alert(`Email: ${email}`);
+        // });
+    });
 }
+
+function calculateTotal(price = 0) {
+    // Get the number of items and price per item from the form inputs
+    const number = parseFloat(document.getElementById('buyNumber').value) || 0;
+
+    // Calculate the total price
+    const totalPrice = number * price;
+    alert(totalPrice);
+
+    // Update the paragraph element with the total price
+    document.getElementById('totalPrice').innerText = `Total Price: $${totalPrice.toFixed(2)}`;
+}
+
+// Add event listeners to input fields to update total price automatically
+
 
 document.getElementById("addMedbtn").addEventListener('click', function(event) {
 
