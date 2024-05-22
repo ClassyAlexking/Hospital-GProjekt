@@ -566,3 +566,34 @@ body {
 .Medicines-popup.active .wrapper{
     transform: scale(1);
 }
+
+/*Profile*/
+.promain{
+    padding: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.prosidebar{
+    background-color: #333;
+    color: white;
+    height: 100%;
+}
+.profilebar a{
+    margin-left:10px;
+    display: block;
+    color: white;
+    padding-bottom: 10px;
+    font-size: 30px;
+    text-decoration: none;
+}
+.procard{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.procontents{
+    background-color: whitesmoke;
+}
+.prorow{
+    display: flex;
+    flex-wrap: wrap;
+}
